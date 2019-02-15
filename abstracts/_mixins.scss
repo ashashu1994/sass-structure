@@ -1,0 +1,81 @@
+// only for mixins
+// ------------------------------------------
+$browsers: 'moz',
+'webkit',
+'o';
+@mixin transition($property, $time, $animation) {
+    @each $browser in $browsers {
+        -#{$browser}-transition: $property $time $animation;
+    }
+    transition: $property $time $animation;
+}
+
+@mixin transform($property) {
+    @each $browser in $browsers {
+        -#{$browser}-transform: $property;
+    }
+    transform: $property;
+}
+
+@mixin calc($property, $default, $expression) {
+    #{$property}: $default;
+    @each $browser in $browsers {
+        #{$property}:-#{$browser}-calc(#{$expression});
+    }
+    #{$property}: calc(#{$expression});
+}
+
+@mixin border-radius($value) {
+    border-radius: $value;
+    @each $browser in $browsers {
+        -#{$browser}-border-radius: $value;
+    }
+}
+
+@mixin border-radius-all($lt, $rt, $rb, $lb) {
+    border-radius: $lt $rt $rb $lb;
+    @each $browser in $browsers {
+        -#{$browser}-border-radius: $lt $rt $rb $lb;
+    }
+}
+
+@mixin box-shadow($x, $y, $blur, $color) {
+    box-shadow: $x $y $blur $color;
+    @each $browser in $browsers {
+        -#{$browser}-box-shadow: $x $y $blur $color;
+    }
+}
+
+@mixin shadow-default {
+    box-shadow: 0 1px 10px $shadow-light;
+    -webkit-box-shadow: 0 1px 10px $shadow-light;
+    -moz-box-shadow: 0 1px 10px $shadow-light;
+    -o-box-shadow: 0 1px 10px $shadow-light;
+}
+
+@mixin square($value) {
+    width: $value;
+    height: $value;
+}
+
+@mixin rectangle($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin afterbefore($top, $right, $bottom, $left) {
+    content: "";
+    position: absolute;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}
+
+@mixin position($position, $top, $right, $bottom, $left) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+}

@@ -1,0 +1,91 @@
+/* button */
+.btn{
+  // basic default button
+  @extend %fs-sm;
+  @extend %fw-sbold;
+  text-transform:uppercase;
+  text-align:center;
+  padding: 8px 15px;
+  letter-spacing: 0.1em;
+  @include border-radius(4px);
+  color:$text-light-grey;
+  background:$bg-table;
+  @include box-shadow(1px,1px,3px,$shadow-light);
+  &:focus,&:hover,&:active{
+    @include box-shadow(0,0px,10px,$shadow-light);
+    background:darken($bg-table, 2%);
+    border-color:darken($bg-table, 2%);
+  }
+  &.btn-border-basic{
+    background:$bg-white;
+    color:$text-basic;
+    border:1px solid $border-basic;
+    &:focus,&:hover,&:active{
+      border:1px solid darken($bg-basic, 2%);
+    }
+  }
+  // button primary (blue)
+  &.btn-primary{
+    background:$bg-primary;
+    color:$text-white;
+    border:1px solid $border-primary;
+    &:focus,&:hover,&:active,&:not(:disabled):not(.disabled):active{
+      background:darken($bg-primary, 5%);
+      border-color:darken($bg-primary, 5%);
+    }
+  }
+  &.btn-border-primary,&.btn-default,&.btn-border-default{
+    background:$bg-white;
+    color:$text-primary;
+    border:1px solid $border-primary;
+    &:focus,&:hover,&:active{
+      border:1px solid darken($bg-primary, 2%);
+    }
+  }
+  // button danger (red)
+  &.btn-danger{
+    background:$bg-danger;
+    color:$text-white;
+    border:1px solid $border-danger;
+    &:focus,&:hover,&:active,&:not(:disabled):not(.disabled):active{
+      background:darken($bg-danger, 5%);
+      border-color:darken($bg-danger, 5%);
+    }
+  }
+  &.btn-border-danger{
+    background:$bg-white;
+    color:$text-danger;
+    border:1px solid $border-danger;
+    &:focus,&:hover,&:active,&:not(:disabled):not(.disabled):active{
+      border:1px solid darken($bg-danger, 2%);
+    }
+  }
+  // button success (green)
+  &.btn-success{
+    background:$bg-success;
+    color:$text-white;
+    border:1px solid $border-success;
+    &:focus,&:hover,&:active,&:not(:disabled):not(.disabled):active{
+      background:darken($bg-success, 5%);
+      border-color:darken($bg-success, 5%);
+    }
+  }
+  &.btn-border-success{
+    background:$bg-white;
+    color:$text-success;
+    border:1px solid $border-success;
+    &:focus,&:hover,&:active,&:not(:disabled):not(.disabled):active{
+      border:1px solid darken($bg-success, 2%);
+    }
+  }
+  // button nothing
+  &.btn-nothing{
+    padding:0;
+    background:transparent;
+    border:0px;
+    text-transform: none;
+    &:focus,&:hover,&:active{
+      @include box-shadow(0,0,0,$border-white);
+    }
+  }
+}

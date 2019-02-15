@@ -1,0 +1,185 @@
+/* toggle switch buttons */
+.switch {
+    position: relative;
+    display: inline-block;
+    @include rectangle(30px, 14px);
+    margin: 0 10px 0 0;
+    vertical-align:middle;
+    &:last-child {
+        margin: 0px;
+    }
+    input {
+        opacity: 0;
+        @include square(0px);
+    }
+    .slider {
+        background-color: $bg-basic;
+        cursor: pointer;
+        @include border-radius(50px);
+        @include position(absolute,0px, 0px, 0px, 0px);
+        @include transition(all, 0.2s, ease-in);
+        &::before {
+        background-color: $bg-table;
+        @include afterbefore(-3px, auto, auto, -3px);
+        @include square(20px);
+        @include transition(all, 0.2s, ease-in);
+        @include border-radius(50%);
+        @include box-shadow(0,0px,2px,rgba(0,0,0,0.2));
+        }
+    }
+    input:checked + .slider {
+        background-color: lighten($bg-primary, 15%);
+    }
+    input:focus + .slider {
+        @include box-shadow(0px, 0px, 1px, $border-primary);
+    }
+    input:checked + .slider:before {
+        @include transform(translateX(14px));
+        background-color: $bg-primary;
+    }
+}
+/* checkbox buttons */
+.checkbox-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    @extend %fs-sm;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        @include square(0px);
+    }
+    .checkmark {
+        @include position(absolute, 0px, auto, auto, 0px);
+        @include square(20px);
+        background-color: $bg-white;
+        border: 1px solid $border-primary;
+        @include border-radius(2px);
+        &::after {
+        display: none;
+        @include afterbefore(2px, auto, auto, 6px);
+        @include rectangle(7px, 12px);
+        border: solid $border-white;
+        border-width: 0 3px 3px 0;
+        @include transform(rotate(45deg));
+        }
+    }
+    &:hover input ~ .checkmark {
+        background-color: $bg-primary;
+    }
+    input:checked ~ .checkmark {
+        background-color: $bg-primary;
+    }
+    input:checked ~ .checkmark:after {
+        display: block;
+    }
+}
+// radio buttons
+.radio-container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    @extend %fs-sm;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .checkmark {
+        @include position(absolute, 0px, auto, auto, 0px);
+        @include square(20px);
+        background-color: transparent;
+        @include border-radius(50%);
+        border: 2px solid $border-grey;
+        &::after {
+        display: none;
+        @include afterbefore(3px, auto, auto, 3px);
+        @include square(10px);
+        @include border-radius(50%);
+        background: $bg-primary;
+        }
+    }
+    &:hover .checkmark {
+        border: 2px solid $border-primary;
+    }
+    &:hover input ~ .checkmark::after {
+        display: block;
+    }
+    input:checked ~ .checkmark {
+        border: 2px solid $border-primary;
+    }
+    input:checked ~ .checkmark:after {
+        display: block;
+    }
+}
+// custom form boxes of bootstrap 4
+.form-group {
+    &.custom {
+        position: relative;
+        border: 1px solid $border-basic;
+        @extend %fs-sm;
+        @include border-radius(3px);
+        &:focus,
+        &:hover,
+        &:active {
+            @include box-shadow(0, 0px, 10px, $shadow-light);
+            border: 1px solid darken($bg-basic, 2%);
+        }
+        label {
+            @include position(absolute, 9px, auto, auto, 10px);
+            background: transparent;
+            @extend %fs-sm;
+            padding: 0 4px;
+            @include transition(all, 0.1s, ease-in);
+            @include border-radius(25px);
+            z-index: -1;
+        }
+        .form-control {
+            position: relative;
+            border: 0px;
+            padding: 10px 15px;
+            @extend %fw-normal;
+            @include border-radius(0px);
+            background-color: transparent;
+            height: auto;
+            box-shadow: 0 0 0;
+            &:focus,
+            &:active,
+            &:hover {
+                @include box-shadow(0, 0px, 0px, #fff);
+            }
+            &:not(:placeholder-shown)+label {
+                top: -10px;
+                z-index: 1;
+                background-color: $bg-white;
+            }
+            &:focus+label {
+                top: -10px;
+                z-index: 1;
+                background-color: $bg-white;
+                @extend %fs-xs;
+            }
+        }
+        &.labelup {
+            label {
+                top: -10px;
+                z-index: 1;
+                background-color: $bg-white;
+                @extend %fs-xs;
+            }
+        }
+    }
+}

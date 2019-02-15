@@ -1,0 +1,46 @@
+// only for font related css
+// ------------------------------------------
+$primary-font: Montserrat;
+// font size
+%fs-xxs{
+  //10px
+  font-size:0.7rem;
+}
+%fs-xs{
+  //12px
+  font-size:0.8571rem;
+}
+%fs-sm{
+  //14px
+  font-size:1rem;
+}
+%fs-md{
+  //16px
+  font-size:1.143rem;
+}
+%fs-lg{
+  //18px
+  font-size:1.286rem;
+}
+%fs-xl{
+  //20px
+  font-size:1.429rem;
+}
+%fs-xxl{
+  //22px
+  font-size:1.767rem;
+}
+%fs-xxxl{
+  //22px
+  font-size:2.2rem;
+}
+// font weight
+%fw-normal{
+  font-weight:400;
+}
+%fw-sbold{
+  font-weight:500;
+}
+%fw-bold{
+  font-weight:700;
+}
